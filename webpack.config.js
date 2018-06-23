@@ -74,6 +74,7 @@ module.exports = {
             chunkFilename: '[id].css',
         }),
         new webpack.ProvidePlugin({
+            _: 'lodash',
             Vue: ['vue/dist/vue.esm.js', 'default'],
         }),
         ...({
