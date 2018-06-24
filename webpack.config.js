@@ -75,7 +75,10 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             _: 'lodash',
-            Vue: ['vue/dist/vue.esm.js', 'default'],
+            Vue: [
+                {development: 'vue/dist/vue.runtime.esm.js', production: 'vue/dist/vue.runtime.min.js'}[NODE_ENV],
+                'default',
+            ],
         }),
         ...({
             development: [new webpack.NamedModulesPlugin(), new webpack.NoEmitOnErrorsPlugin()],

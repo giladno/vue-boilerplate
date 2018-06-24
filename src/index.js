@@ -4,6 +4,8 @@ import App from './app.vue';
 
 Vue.use(VueRouter);
 
+const RouterView = Vue.component('router-view');
+
 const components = require.context('./components', false, /\w+\.(vue|js)$/);
 for (let filename of components.keys()) {
     let opt = components(filename);
@@ -14,5 +16,7 @@ new Vue({
     router: new VueRouter({
         routes: [{path: '/', component: App}],
     }),
-    template: '<router-view></router-view>',
+    render() {
+        return <RouterView />;
+    },
 }).$mount('#app');
